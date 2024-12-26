@@ -71,7 +71,14 @@ async fn einzelanfrage() {
         .expect("Fehler beim Einlesen der Suchanfrage");
 
     // Geizhals abfragen und nach angegebenem Produkt suchen
-    let results: Vec<models::Product> = scraper::scrape_geizhals(&search_query).await.unwrap();
+    let results: Vec<models::Product> = match scraper::scrape_geizhals(&search_query).await {
+        Ok(val) => val,
+        Err(_) => {
+            println!("Es konnten keine Produkte gefunden werden!");
+            println!("Bitte versuchen Sie es erneut!");
+            Vec::new()
+        }
+    };
 
     // Pfad formatieren
     if path.ends_with('/') {

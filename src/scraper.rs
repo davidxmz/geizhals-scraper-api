@@ -20,11 +20,11 @@ pub async fn scrape_geizhals(query: &str) -> Result<Vec<Product>, Box<dyn Error>
     let document: Html = Html::parse_document(&body);
 
     // Selektoren definieren
-    let product_selector: Selector = Selector::parse(".listview__item").unwrap();
-    let name_selector: Selector = Selector::parse(".listview__name-link").unwrap();
-    let price_selector: Selector = Selector::parse(".price").unwrap();
-    let image_selector: Selector = Selector::parse(".listview__image").unwrap();
-    let offers_selector: Selector = Selector::parse(".listview__offercount-link").unwrap();
+    let product_selector: Selector = Selector::parse(".listview__item")?;
+    let name_selector: Selector = Selector::parse(".listview__name-link")?;
+    let price_selector: Selector = Selector::parse(".price")?;
+    let image_selector: Selector = Selector::parse(".listview__image")?;
+    let offers_selector: Selector = Selector::parse(".listview__offercount-link")?;
 
     // Erstellt einen Vektor für die Produkte
     let mut products: Vec<Product> = Vec::new();
