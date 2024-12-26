@@ -59,6 +59,7 @@ async fn main() {
 async fn einzelanfrage() {
     // Benutzereingaben
     println!("Bitte geben Sie den Pfad für den Ausgabeordner ein:");
+    // TODO: Bei leerer Eingabe Standardwert verwenden
     let mut path: String = Input::new()
         .with_prompt("Pfad zum Ausgabeordner")
         .interact()
